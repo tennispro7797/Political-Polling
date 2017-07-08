@@ -14,7 +14,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void goToHomeActivity(View view) {
-        Intent intent = new Intent(this, PollDataActivity.class);
+        Intent intent = new Intent(this, PollSelectActivity.class);
         startActivity(intent);
     }
 }
