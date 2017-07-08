@@ -7,11 +7,9 @@
     android:layout_height="match_parent"
     tools:context="com.example.adityamohile.politicalpolling.PollDataActivity">
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/pollDataList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </ListView>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
