@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Political-Polling.iml" filepath="$PROJECT_DIR$/Political-Polling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PoliticalPolling.iml" filepath="$PROJECT_DIR$/PoliticalPolling.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
