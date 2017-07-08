@@ -4,23 +4,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_answer_polls"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_mode_edit_black_24dp"
             android:title="Answer Polls" />
         <item
             android:id="@+id/nav_view_data"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_poll_black_24dp"
             android:title="View Poll Data" />
         <item
             android:id="@+id/nav_polling_impact"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_check_circle_black_24dp"
             android:title="Polling Impact" />
         <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_settings_black_24dp"
             android:title="Settings" />
         <item
             android:id="@+id/nav_help"
-            android:icon="@drawable/ic_menu_share"
+            android:icon="@drawable/ic_help_black_24dp"
             android:title="Help" />
     </group>
 
