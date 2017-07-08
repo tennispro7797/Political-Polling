@@ -1,5 +1,6 @@
 package com.example.adityamohile.politicalpolling;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -80,18 +81,17 @@ public class NavDrawerActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_answer_polls) {
+            // Add Intent for Poll Page
+        } else if (id == R.id.nav_view_data) {
+            Intent intent = new Intent(this, PollDataActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_polling_impact) {
+            // Add Intent for Polling Impact Page
+        } else if (id == R.id.nav_settings) {
+            // Add Intent for Settings Page
+        } else if (id == R.id.nav_help) {
+            // Add Intent for Help Page
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
