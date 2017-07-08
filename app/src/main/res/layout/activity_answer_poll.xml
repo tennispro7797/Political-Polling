@@ -30,16 +30,21 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yes"/>
+            android:layout_margin="10dp"
+            android:text="Yes"
+            android:background="@color/chartreuse" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No"/>
+            android:layout_margin="10dp"
+            android:text="No"
+            android:background="@color/red" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:text="No Opinion"/>
     </LinearLayout>
 
