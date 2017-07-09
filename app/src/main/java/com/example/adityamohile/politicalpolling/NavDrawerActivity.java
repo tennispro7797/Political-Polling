@@ -83,7 +83,7 @@ public class NavDrawerActivity extends AppCompatActivity
         Fragment fragment = null;
         if (id == R.id.nav_answer_polls) {
             // Add Intent for Poll Page
-            fragment = new AnswerPollFragment();
+            fragment = new PollSelectFragment();
         } else if (id == R.id.nav_view_data) {
             fragment = new PollDataFragment();
         } else if (id == R.id.nav_polling_impact) {
