@@ -1,9 +1,11 @@
 package com.example.adityamohile.politicalpolling;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -81,17 +83,24 @@ public class NavDrawerActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        android.support.v4.app.Fragment fragment = null;
         if (id == R.id.nav_answer_polls) {
             // Add Intent for Poll Page
+            fragment = new AnswerPollFragment();
         } else if (id == R.id.nav_view_data) {
-            Intent intent = new Intent(this, PollDataActivity.class);
-            startActivity(intent);
+            fragment = new PollDataFragment();
         } else if (id == R.id.nav_polling_impact) {
             // Add Intent for Polling Impact Page
         } else if (id == R.id.nav_settings) {
             // Add Intent for Settings Page
         } else if (id == R.id.nav_help) {
             // Add Intent for Help Page
+        }
+
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_main, fragment);
+            ft.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
