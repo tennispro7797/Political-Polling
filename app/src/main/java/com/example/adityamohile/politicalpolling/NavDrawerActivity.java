@@ -88,6 +88,7 @@ public class NavDrawerActivity extends AppCompatActivity
             fragment = new PollDataFragment();
         } else if (id == R.id.nav_polling_impact) {
             // Add Intent for Polling Impact Page
+            fragment = new PollImpactFragment();
         } else if (id == R.id.nav_settings) {
             // Add Intent for Settings Page
         } else if (id == R.id.nav_help) {
