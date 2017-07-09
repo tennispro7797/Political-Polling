@@ -109,6 +109,7 @@ public class NavDrawerActivity extends AppCompatActivity
             // Add Intent for Settings Page
         } else if (id == R.id.nav_help) {
             // Add Intent for Help Page
+            fragment = new HelpFragment();
         }
 
         if (fragment != null) {
