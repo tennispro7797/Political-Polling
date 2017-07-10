@@ -53,21 +53,18 @@ public class NavDrawerActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
 
+        } else if (currentFragment == R.id.nav_view_data) {
+            Fragment fragment = new PollSelectFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_main, fragment);
+            ft.commit();
+            currentFragment = R.id.nav_answer_polls;
         } else {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
-//        else {
-//            Fragment fragment = new PollSelectFragment();
-//            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//            ft.replace(R.id.content_main, fragment);
-//            ft.commit();
-//            currentFragment = R.id.nav_answer_polls;
-//            Log.d("hello","Going back to PollSelect! Current fragment ID: "+currentFragment);
-//
-//        }
     }
 
     @Override
@@ -97,9 +94,10 @@ public class NavDrawerActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         this.currentFragment = id;
-//        Log.d("hello","Current fragment changed!");
+
         Fragment fragment = null;
         Intent intent = null;
+
         if (id == R.id.nav_answer_polls) {
             // Add Intent for Poll Page
             fragment = new PollSelectFragment();
