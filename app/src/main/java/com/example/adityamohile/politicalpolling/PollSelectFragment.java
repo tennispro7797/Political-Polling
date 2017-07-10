@@ -2,6 +2,7 @@ package com.example.adityamohile.politicalpolling;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,9 +20,6 @@ public class PollSelectFragment extends Fragment {
     private RecyclerView rv;
     final ArrayList<String> myValues = new ArrayList<String>();
     final ArrayList<String> descrips = new ArrayList<String>();
-
-
-
 
     @Nullable
     @Override
@@ -48,10 +46,8 @@ public class PollSelectFragment extends Fragment {
                     @Override public void onItemClick(View view, int position) {
                         // do whatever
                         //Toast.makeText(MainActivity.this, myValues.get(position) + " " + descrips.get(position), Toast.LENGTH_SHORT).show();
-                        Fragment fragment = new AnswerPollFragment();
-                        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.content_main, fragment);
-                        ft.commit();
+                        Intent intent = new Intent(getActivity(),AnswerPollActivity.class);
+                        startActivity(intent);
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
@@ -59,11 +55,6 @@ public class PollSelectFragment extends Fragment {
                     }
                 })
         );
-
-        //int width = getResources().getDisplayMetrics().widthPixels/2;
-        //RecyclerView.LayoutParams params = () mDrawerList.getLayoutParams();
-        //params.width = width;
-        //mDrawerList.setLayoutParams(params);
 
         return rootView;
     }
