@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
@@ -48,19 +49,17 @@ public class NavDrawerActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-            Log.d("hello",""+drawer.getId());
-        } else if (currentFragment != R.id.nav_answer_polls) {
-//            super.onBackPressed();
-            Log.d("hello","This is going back to answer polls fragment");
+
+        } else if (currentFragment == R.id.nav_view_data) {
             Fragment fragment = new PollSelectFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_main, fragment);
             ft.commit();
-            this.currentFragment = R.id.nav_answer_polls;
+            currentFragment = R.id.nav_answer_polls;
         } else {
-            Log.d("hello","Current Fragment != Answer Polls");
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -95,8 +94,10 @@ public class NavDrawerActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         this.currentFragment = id;
-        Log.d("hello","Current fragment changed!");
+
         Fragment fragment = null;
+        Intent intent = null;
+
         if (id == R.id.nav_answer_polls) {
             // Add Intent for Poll Page
             fragment = new PollSelectFragment();
@@ -104,11 +105,14 @@ public class NavDrawerActivity extends AppCompatActivity
             fragment = new PollDataFragment();
         } else if (id == R.id.nav_polling_impact) {
             // Add Intent for Polling Impact Page
-            fragment = new PollImpactFragment();
+            intent = new Intent(this,PollImpactActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_settings) {
             // Add Intent for Settings Page
         } else if (id == R.id.nav_help) {
             // Add Intent for Help Page
+            intent = new Intent(this,HelpActivity.class);
+            startActivity(intent);
         }
 
         if (fragment != null) {

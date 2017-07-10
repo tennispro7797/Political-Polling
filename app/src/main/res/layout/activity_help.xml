@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FAQ"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question 1"
+        android:textSize="25sp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Answer to Question 1"
+        android:textSize="15sp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question 2"
+        android:textSize="25sp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Answer to Question 2"
+        android:textSize="15sp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question 3"
+        android:textSize="25sp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Answer to Question 3"
+        android:textSize="15sp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question 4"
+        android:textSize="25sp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Answer to Question 4"
+        android:textSize="15sp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question 5"
+        android:textSize="25sp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Answer to Question 5"
+        android:textSize="15sp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question 6"
+        android:textSize="25sp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Answer to Question 6"
+        android:textSize="15sp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp"/>
+
+</LinearLayout>
