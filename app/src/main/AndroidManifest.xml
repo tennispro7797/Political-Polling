@@ -19,10 +19,13 @@
         <activity
             android:name=".NavDrawerActivity"
             android:label="@string/title_activity_nav_drawer"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".AnswerPollActivity"/>
-        <activity android:name=".HelpActivity"/>
-        <activity android:name=".PollImpactActivity"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AnswerPollActivity" />
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".PollImpactActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>
