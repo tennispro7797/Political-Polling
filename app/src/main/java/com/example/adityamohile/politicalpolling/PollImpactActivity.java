@@ -13,6 +13,7 @@ public class PollImpactActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        setTitle("Poll Impact");
     }
 
     @Override

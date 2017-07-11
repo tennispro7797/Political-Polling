@@ -13,6 +13,7 @@ public class HelpActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        setTitle("Help");
     }
 
     @Override

@@ -13,6 +13,7 @@ public class AnswerPollActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        setTitle("Answer Poll");
     }
 
     @Override
