@@ -109,6 +109,8 @@ public class NavDrawerActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_settings) {
             // Add Intent for Settings Page
+            intent = new Intent(this,SettingsActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_help) {
             // Add Intent for Help Page
             intent = new Intent(this,HelpActivity.class);
