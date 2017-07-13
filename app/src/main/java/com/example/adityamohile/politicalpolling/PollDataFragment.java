@@ -1,6 +1,7 @@
 package com.example.adityamohile.politicalpolling;
 
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -38,6 +39,21 @@ public class PollDataFragment extends Fragment {
 
         //ADAPTER
         rv.setAdapter(new RecyclerViewAdapter(getActivity(),index,data));
+
+        rv.addOnItemTouchListener(
+                new RecyclerItemClickListener(getActivity(), rv, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        // do whatever
+                        //Toast.makeText(MainActivity.this, myValues.get(position) + " " + descrips.get(position), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(),ViewPollDataActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
 
         return rootView;
     }
