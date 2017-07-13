@@ -3,6 +3,7 @@ package com.example.adityamohile.politicalpolling;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -60,4 +61,14 @@ public class ViewPollDataActivity extends AppCompatActivity {
         viewDataLayout.addView(chart);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
