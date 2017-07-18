@@ -49,7 +49,8 @@ public class NavDrawerActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
+        boolean isTrue = currentFragment == R.id.nav_settings;
+        Log.v("hello","Settings Activity: " + isTrue);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
 

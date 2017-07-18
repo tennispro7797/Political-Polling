@@ -2,9 +2,11 @@ package com.example.adityamohile.politicalpolling;
 
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,9 +15,11 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-public class PollDataFragment extends Fragment {
+public class PollDataFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private RecyclerView rv;
+    SwipeRefreshLayout swipeLayout;
+    private int addCounter = 10;
     final ArrayList<String> index = new ArrayList<String>();
     final ArrayList<String> data = new ArrayList<String>();
 
@@ -55,7 +59,29 @@ public class PollDataFragment extends Fragment {
                 })
         );
 
+        swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeContainer);
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setColorSchemeColors(getResources().getColor(android.R.color.holo_blue_bright),
+                getResources().getColor(android.R.color.holo_red_dark),
+                getResources().getColor(android.R.color.holo_blue_dark),
+                getResources().getColor(android.R.color.holo_orange_dark));
+
         return rootView;
+    }
+
+    @Override
+    public void onRefresh() {
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                index.add(0, "Poll Index " + addCounter);
+                data.add(0, "Poll Data " + addCounter);
+                addCounter++;
+                rv.setAdapter(new RecyclerViewAdapter(getActivity(),index, data));
+                swipeLayout.setRefreshing(false);
+            }
+        }, 1500);
     }
 
     @Override
