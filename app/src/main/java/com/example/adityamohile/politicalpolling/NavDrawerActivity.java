@@ -53,7 +53,8 @@ public class NavDrawerActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
 
-        } else if (currentFragment == R.id.nav_view_data) {
+        } else if (currentFragment == R.id.nav_view_data
+                || currentFragment == R.id.nav_settings) {
             Fragment fragment = new PollSelectFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_main, fragment);
