@@ -1,8 +1,10 @@
 package com.example.adityamohile.politicalpolling;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -19,11 +21,13 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private RecyclerView rv;
     SwipeRefreshLayout swipeLayout;
-    private int addCounter = 10;
+    private int addCounter;
     final ArrayList<String> myValues = new ArrayList<String>();
     final ArrayList<String> descrips = new ArrayList<String>();
 
@@ -31,7 +35,13 @@ public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.O
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         //Populate the ArrayLists
-        for(int i = 0; i < 10; i++) {
+
+        Log.v("lifecycle","CREATE VIEW");
+
+        SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("myPrefs", MODE_PRIVATE);
+        addCounter = sharedPrefs.getInt("numPosts",10);
+        Log.v("lifecycle","Num Posts on Create: " + addCounter);
+        for(int i = addCounter; i > 0; i--) {
             myValues.add("Poll Question " + i);
             descrips.add("Poll Description " + i);
         }
@@ -75,16 +85,48 @@ public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.O
     @Override
     public void onRefresh() {
 
+        final Activity blip = this.getActivity();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                addCounter++;
+                Log.v("lifecycle","increased counter to: " + addCounter);
                 myValues.add(0, "Poll Question " + addCounter);
                 descrips.add(0, "Poll Description " + addCounter);
-                addCounter++;
+
+                SharedPreferences prefs = blip.getSharedPreferences("myPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor prefEditor = prefs.edit();
+                prefEditor.putInt("numPosts",addCounter);
+                prefEditor.commit();
+
                 rv.setAdapter(new RecyclerViewAdapter(getActivity(),myValues, descrips));
                 swipeLayout.setRefreshing(false);
             }
         }, 1500);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.v("lifecycle","CREATED");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.v("lifecycle","STOPPED");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.v("lifecycle","RESUMED");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.v("lifecycle","DESTROYED");
     }
 
     @Override
