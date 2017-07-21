@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "625002016671",
+    "project_id": "political-polling"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625002016671:android:8cb43e8c892007a0",
+        "android_client_info": {
+          "package_name": "com.example.adityamohile.politicalpolling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625002016671-p0pcl5h7l6u49i3m2tqdb109g04h40c0.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "625002016671-mopu5g2tq8a5din7bvctcbe0srk407in.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.adityamohile.politicalpolling",
+            "certificate_hash": "e572626c8cd443506e1b51c37aa42117e5d46355"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBd_JpDfv3v1WhzzCzLlifmLDgW609nqE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
