@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity implements
         SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
         findViewById(R.id.sign_in_button).setOnClickListener(this);
+        findViewById(R.id.sign_out_button).setOnClickListener(this);
 
         mStatusTextView = (TextView) findViewById(R.id.status);
 
@@ -60,6 +61,9 @@ public class LoginActivity extends AppCompatActivity implements
         switch (view.getId()) {
             case R.id.sign_in_button:
                 signIn();
+                break;
+            case R.id.sign_out_button:
+                signOut();
                 break;
         }
     }
@@ -117,6 +121,19 @@ public class LoginActivity extends AppCompatActivity implements
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    // [START signOut]
+    private void signOut() {
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(Status status) {
+                        // [START_EXCLUDE]
+                        updateUI(false);
+                        // [END_EXCLUDE]
+                    }
+                });
     }
 
     public void goToHomeActivity() {

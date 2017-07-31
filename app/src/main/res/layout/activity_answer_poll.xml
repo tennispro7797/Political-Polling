@@ -27,25 +27,63 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
-        <Button
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:text="Yes"-->
+            <!--android:background="@color/chartreuse" />-->
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:padding="40sp"
             android:text="Yes"
-            android:background="@color/chartreuse" />
+            app:bootstrapBrand="success"
+            app:bootstrapSize="xl"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="true"
+            android:layout_marginBottom="10sp"
+            />
 
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:padding="40sp"
             android:text="No"
-            android:background="@color/red" />
+            app:bootstrapBrand="danger"
+            app:bootstrapSize="xl"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="true"
+            android:layout_marginBottom="10sp"
+            />
 
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="No Opinion"/>
+            android:padding="40sp"
+            android:text="No Opinion"
+            app:bootstrapBrand="warning"
+            app:bootstrapSize="xl"
+            app:buttonMode="regular"
+            app:showOutline="true"
+            app:roundedCorners="true"
+            />
+
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:text="No"-->
+            <!--android:background="@color/red" />-->
+
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:text="No Opinion"/>-->
     </LinearLayout>
 
 

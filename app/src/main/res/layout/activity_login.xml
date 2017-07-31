@@ -5,8 +5,16 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="top|center"
     tools:context="com.example.adityamohile.politicalpolling.LoginActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_gravity="top|center"
+        android:textSize="40sp"
+        android:layout_marginTop="20sp"/>
 
     <!--<Button-->
         <!--android:layout_width="wrap_content"-->
@@ -17,7 +25,15 @@
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150sp"/>
+
+
+    <Button
+        android:id="@+id/sign_out_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"/>
 
     <TextView
         android:id="@+id/status"
