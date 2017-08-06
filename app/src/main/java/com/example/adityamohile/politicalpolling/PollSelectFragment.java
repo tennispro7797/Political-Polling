@@ -19,17 +19,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.kosalgeek.android.json.JsonConverter;
+import com.kosalgeek.genasync12.AsyncResponse;
+import com.kosalgeek.genasync12.PostResponseAsyncTask;
+
 import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, AsyncResponse {
 
     private RecyclerView rv;
     SwipeRefreshLayout swipeLayout;
     private int addCounter;
+    private PostResponseAsyncTask getPolls;
     final ArrayList<String> myValues = new ArrayList<String>();
     final ArrayList<String> descrips = new ArrayList<String>();
+    private ArrayList<Polls> polls;
 
     @Nullable
     @Override
@@ -37,14 +43,15 @@ public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.O
         //Populate the ArrayLists
 
         Log.v("lifecycle","CREATE VIEW");
-
-        SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("myPrefs", MODE_PRIVATE);
-        addCounter = sharedPrefs.getInt("numPosts",10);
-        Log.v("lifecycle","Num Posts on Create: " + addCounter);
-        for(int i = addCounter; i > 0; i--) {
-            myValues.add("Poll Question " + i);
-            descrips.add("Poll Description " + i);
-        }
+        getPolls = new PostResponseAsyncTask(getActivity(), this);
+        getPolls.execute("http://10.0.2.2/readQuestions.php");
+//        SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("myPrefs", MODE_PRIVATE);
+//        addCounter = sharedPrefs.getInt("numPosts",10);
+//        Log.v("lifecycle","Num Posts on Create: " + addCounter);
+//        for(int i = addCounter; i > 0; i--) {
+//            myValues.add("Poll Question " + i);
+//            descrips.add("Poll Description " + i);
+//        }
         View rootView = inflater.inflate(R.layout.activity_poll_select,null);
 
 
@@ -53,9 +60,6 @@ public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.O
 
         //LAYOUT MANAGER
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        //ADAPTER
-        rv.setAdapter(new RecyclerViewAdapter(getActivity(),myValues, descrips));
 
         rv.addOnItemTouchListener(
                 new RecyclerItemClickListener(getActivity(), rv, new RecyclerItemClickListener.OnItemClickListener() {
@@ -89,49 +93,49 @@ public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.O
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                addCounter++;
-                Log.v("lifecycle","increased counter to: " + addCounter);
-                myValues.add(0, "Poll Question " + addCounter);
-                descrips.add(0, "Poll Description " + addCounter);
+                PostResponseAsyncTask getPollsAgain = new PostResponseAsyncTask(getActivity(), PollSelectFragment.this);
+                getPollsAgain.execute("http://10.0.2.2/readQuestions.php");
 
-                SharedPreferences prefs = blip.getSharedPreferences("myPrefs", MODE_PRIVATE);
-                SharedPreferences.Editor prefEditor = prefs.edit();
-                prefEditor.putInt("numPosts",addCounter);
-                prefEditor.commit();
-
-                rv.setAdapter(new RecyclerViewAdapter(getActivity(),myValues, descrips));
+//                addCounter++;
+//                Log.v("lifecycle","increased counter to: " + addCounter);
+//                myValues.add(0, "Poll Question " + addCounter);
+//                descrips.add(0, "Poll Description " + addCounter);
+//
+//                SharedPreferences prefs = blip.getSharedPreferences("myPrefs", MODE_PRIVATE);
+//                SharedPreferences.Editor prefEditor = prefs.edit();
+//                prefEditor.putInt("numPosts",addCounter);
+//                prefEditor.commit();
                 swipeLayout.setRefreshing(false);
             }
         }, 1500);
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.v("lifecycle","CREATED");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.v("lifecycle","STOPPED");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.v("lifecycle","RESUMED");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.v("lifecycle","DESTROYED");
-    }
-
-    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Select Poll");
+    }
+
+    @Override
+    public void processFinish(String s) {
+        if (polls == null) {
+            Log.v("pollStatus","polls = null");
+            polls = new JsonConverter<Polls>().toArrayList(s, Polls.class);
+            for (int i = 0; i < polls.size(); i++) {
+                myValues.add(polls.get(i).question);
+                descrips.add(polls.get(i).description);
+            }
+        } else if (polls != null) {
+            Log.v("pollStatus","poll = "+polls.size());
+            ArrayList<Polls> newPolls = new JsonConverter<Polls>().toArrayList(s, Polls.class);
+            Log.v("pollStatus","newPolls = "+newPolls.size());
+            for (int i = polls.size(); i < newPolls.size(); i++) {
+                myValues.add(newPolls.get(i).question);
+                descrips.add(newPolls.get(i).description);
+            }
+            polls = newPolls;
+        }
+        //ADAPTER
+        rv.setAdapter(new RecyclerViewAdapter(getActivity(),myValues, descrips));
     }
 }

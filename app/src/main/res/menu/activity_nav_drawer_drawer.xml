@@ -11,6 +11,11 @@
             android:icon="@drawable/ic_poll_black_24dp"
             android:title="View Poll Data" />
         <item
+            android:id="@+id/nav_poll_post"
+            android:icon="@drawable/ic_add_circle_black_24dp"
+            android:title="Add Poll"
+            />
+        <item
             android:id="@+id/nav_polling_impact"
             android:icon="@drawable/ic_check_circle_black_24dp"
             android:title="Polling Impact" />

@@ -84,4 +84,15 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+
+    <string-array name="categories_array">
+        <item>Civil Rights</item>
+        <item>Economy</item>
+        <item>Education</item>
+        <item>Elections</item>
+        <item>Environment</item>
+        <item>Healthcare</item>
+        <item>Immigration</item>
+        <item>Technology</item>
+    </string-array>
 </resources>

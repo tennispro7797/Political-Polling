@@ -117,8 +117,10 @@ public class NavDrawerActivity extends AppCompatActivity
             // Add Intent for Help Page
             intent = new Intent(this,HelpActivity.class);
             startActivity(intent);
+        } else if (id == R.id.nav_poll_post) {
+            intent = new Intent(this,PollPostActivity.class);
+            startActivity(intent);
         }
-
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_main, fragment);
