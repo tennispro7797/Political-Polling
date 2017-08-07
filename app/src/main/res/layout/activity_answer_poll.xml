@@ -11,15 +11,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Poll Question"
         android:textSize="30dp"
+        android:id="@+id/pollQuestion"
         android:layout_gravity="top|center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description"
         android:textSize="20dp"
+        android:id="@+id/pollDescription"
         android:layout_gravity="top|center"/>
 
     <LinearLayout
@@ -44,6 +44,8 @@
             app:buttonMode="regular"
             app:showOutline="false"
             app:roundedCorners="true"
+            android:id="@+id/btnYes"
+            android:onClick="answeredYes"
             android:layout_marginBottom="10sp"
             />
 
@@ -57,6 +59,8 @@
             app:buttonMode="regular"
             app:showOutline="false"
             app:roundedCorners="true"
+            android:id="@+id/btnNo"
+            android:onClick="answeredNo"
             android:layout_marginBottom="10sp"
             />
 
@@ -69,6 +73,8 @@
             app:bootstrapSize="xl"
             app:buttonMode="regular"
             app:showOutline="true"
+            android:id="@+id/btnNeither"
+            android:onClick="answeredNeither"
             app:roundedCorners="true"
             />
 

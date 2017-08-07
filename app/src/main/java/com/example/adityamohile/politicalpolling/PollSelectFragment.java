@@ -35,6 +35,7 @@ public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.O
     private PostResponseAsyncTask getPolls;
     final ArrayList<String> myValues = new ArrayList<String>();
     final ArrayList<String> descrips = new ArrayList<String>();
+    ArrayList<Integer> pollIDs = new ArrayList<>();
     private ArrayList<Polls> polls;
 
     @Nullable
@@ -45,13 +46,6 @@ public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.O
         Log.v("lifecycle","CREATE VIEW");
         getPolls = new PostResponseAsyncTask(getActivity(), this);
         getPolls.execute("http://10.0.2.2/readQuestions.php");
-//        SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("myPrefs", MODE_PRIVATE);
-//        addCounter = sharedPrefs.getInt("numPosts",10);
-//        Log.v("lifecycle","Num Posts on Create: " + addCounter);
-//        for(int i = addCounter; i > 0; i--) {
-//            myValues.add("Poll Question " + i);
-//            descrips.add("Poll Description " + i);
-//        }
         View rootView = inflater.inflate(R.layout.activity_poll_select,null);
 
 
@@ -67,6 +61,9 @@ public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.O
                         // do whatever
                         //Toast.makeText(MainActivity.this, myValues.get(position) + " " + descrips.get(position), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getActivity(),AnswerPollActivity.class);
+                        intent.putExtra("question", myValues.get(position));
+                        intent.putExtra("description",descrips.get(position));
+                        intent.putExtra("id",pollIDs.get(position)+"");
                         startActivity(intent);
                     }
 
@@ -95,16 +92,6 @@ public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.O
             public void run() {
                 PostResponseAsyncTask getPollsAgain = new PostResponseAsyncTask(getActivity(), PollSelectFragment.this);
                 getPollsAgain.execute("http://10.0.2.2/readQuestions.php");
-
-//                addCounter++;
-//                Log.v("lifecycle","increased counter to: " + addCounter);
-//                myValues.add(0, "Poll Question " + addCounter);
-//                descrips.add(0, "Poll Description " + addCounter);
-//
-//                SharedPreferences prefs = blip.getSharedPreferences("myPrefs", MODE_PRIVATE);
-//                SharedPreferences.Editor prefEditor = prefs.edit();
-//                prefEditor.putInt("numPosts",addCounter);
-//                prefEditor.commit();
                 swipeLayout.setRefreshing(false);
             }
         }, 1500);
@@ -124,6 +111,7 @@ public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.O
             for (int i = 0; i < polls.size(); i++) {
                 myValues.add(polls.get(i).question);
                 descrips.add(polls.get(i).description);
+                pollIDs.add(polls.get(i).id);
             }
         } else if (polls != null) {
             Log.v("pollStatus","poll = "+polls.size());
@@ -132,6 +120,7 @@ public class PollSelectFragment extends Fragment implements SwipeRefreshLayout.O
             for (int i = polls.size(); i < newPolls.size(); i++) {
                 myValues.add(newPolls.get(i).question);
                 descrips.add(newPolls.get(i).description);
+                pollIDs.add(polls.get(i).id);
             }
             polls = newPolls;
         }
